@@ -1,6 +1,6 @@
 module.exports = {
     list(req, res) {
-        res.send('LISTADO DE PRODUCTOS');
+        res.render('products', {title: 'LISTADO DE PRODUCTOS'});
     },
     detail(req, res) {
         res.send('DETALLE DE PRODUCTO');
@@ -16,5 +16,8 @@ module.exports = {
     },
     update(req, res) {
         res.redirect('/detail/:id');
+    },
+    delete(req, res) {
+        res.redirect('/products');
     },
 }

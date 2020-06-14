@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var productsController = require('../controllers/productsControllers');
+var productsController = require('../controllers/productsController')
 
 router.get('/', productsController.list);
 
@@ -10,7 +10,7 @@ router.get('/create', productsController.create);
 router.post('/create', productsController.store);
 
 router.get('/edit/:id', productsController.edit);
-router.put('edit/:id', productsController.update);
+router.put('/edit/:id', productsController.update);
 
 router.get('/delete/:id', productsController.delete);
 
