@@ -35,7 +35,12 @@ module.exports = (sequelize, dataTypes) => {
         },
         user_address_id: {
             type: dataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            foreignKey: true,
+            references: {
+                model: 'User',
+                key: 'id'
+            }
         },
         delete: {
             type: dataTypes.BOOLEAN,
