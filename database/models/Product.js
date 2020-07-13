@@ -66,6 +66,10 @@ module.exports = (sequelize, dataTypes) => {
             through: 'cart_products',
             foreignKey: 'cart_id',
             otherKey: 'product_id'
+        });
+        Product.belongsTo(models.Category, {
+            as: 'category',
+            foreignKey: 'category_id'
         })
     })
 
