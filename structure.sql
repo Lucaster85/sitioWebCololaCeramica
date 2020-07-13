@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`products` (
   `delete` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   CONSTRAINT `category_id`
-    FOREIGN KEY (`id`)
+    FOREIGN KEY (`category_id`)
     REFERENCES `cololaCeramica`.`categories` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

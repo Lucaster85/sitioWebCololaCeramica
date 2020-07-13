@@ -1,6 +1,11 @@
+const db = require('../database/models');
+
 module.exports = {
     list(req, res) {
-        res.json(/*productos*/);
+        db.Products.findAll()
+        .then(products => {
+            res.json(products)
+        })
     },
     detail(req, res) {
         res.json(/*detalle*/);
