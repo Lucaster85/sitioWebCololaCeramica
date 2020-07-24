@@ -27,11 +27,6 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             defaultValue: 0
         },
-        delete: {
-            type: dataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: 0
-        }
     };
 
     const config = {
@@ -39,7 +34,9 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
         timestamps: true,
         createdAt: 'created_at',
-        updatedAt: 'updated_at'
+        updatedAt: 'updated_at',
+        deletedAt: 'deleted_at',
+        paranoid: true
     }
 
     const Category = sequelize.define(alias, cols, config);

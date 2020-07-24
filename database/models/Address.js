@@ -41,12 +41,7 @@ module.exports = (sequelize, dataTypes) => {
                 model: 'User',
                 key: 'id'
             }
-        },
-        delete: {
-            type: dataTypes.BOOLEAN,
-            defaultValue: 0
         }
-
     }
 
     const config = {
@@ -54,7 +49,9 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
         timestamps: true,
         createdAt: 'creadted_at',
-        updatedAt: 'updated_at'
+        updatedAt: 'updated_at',
+        deletedAt: 'deleted_at',
+        paranoid: true
     }
 
     const Address = sequelize.define(alias, cols, config)

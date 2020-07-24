@@ -43,10 +43,6 @@ module.exports = (sequelize, dataTypes) => {
         category_id: {
             type: dataTypes.INTEGER,
             allowNull: false
-        },
-        delete: {
-            type: dataTypes.BOOLEAN,
-            defaultValue: 0
         }
     }
 
@@ -55,7 +51,9 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
         timestamps: true,
         createdAt: 'created_at',
-        updatedAt: 'updated_at'
+        updatedAt: 'updated_at',
+        deletedAt: 'deleted_at',
+        paranoid: true
     }
 
     const Product = sequelize.define(alias, cols, config);

@@ -24,10 +24,6 @@ module.exports = (sequelize, dataTypes) => {
         avatar: {
             type: dataTypes.STRING,
             defaultValue: null
-        },
-        delete: {
-            type: dataTypes.BOOLEAN,
-            defaultValue: 0
         }
     }
 
@@ -36,7 +32,9 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
         timestamps: true,
         createdAt: 'created_at',
-        updetadAt: 'updated_at'
+        updetadAt: 'updated_at',
+        deletedAt: 'deleted_at',
+        paranoid: true
     }
 
     const User = sequelize.define(alias, cols, config);
