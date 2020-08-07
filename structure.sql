@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`users` (
   `avatar` VARCHAR(255) NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+  `delete_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`));
 
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`categories` (
   `updated_at` TIMESTAMP NULL,
   `vajilla` TINYINT NOT NULL DEFAULT 0,
   `decoracion` TINYINT NOT NULL DEFAULT 0,
-  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+  `delete_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`));
 
 
@@ -51,19 +51,16 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `price` INT NOT NULL,
-  `image1` VARCHAR(255) NOT NULL,
-  `image2` VARCHAR(255) NULL,
-  `image3` VARCHAR(255) NULL,
   `summary` VARCHAR(100) NOT NULL,
-  `description` TEXT NULL,
+  `description` VARCHAR(255) NOT NULL,
   `outstanding` TINYINT NULL DEFAULT 0,
   `category_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+  `delete_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `category_id`
-    FOREIGN KEY (`category_id`)
+    FOREIGN KEY (`id`)
     REFERENCES `cololaCeramica`.`categories` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -79,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`carts` (
   `user_cart_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+  `delete_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `user_cart_id`
     FOREIGN KEY (`id`)
@@ -97,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`cart_products` (
   `cart_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+  `delete_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `product_id`
     FOREIGN KEY (`id`)
@@ -125,11 +122,64 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`addresses` (
   `user_address_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+  `delete_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `user_address_id`
     FOREIGN KEY (`id`)
     REFERENCES `cololaCeramica`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `cololaCeramica`.`roles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cololaCeramica`.`roles` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `role` VARCHAR(100) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL,
+  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (`id`));
+
+
+-- -----------------------------------------------------
+-- Table `cololaCeramica`.`user_roles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cololaCeramica`.`user_roles` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `role_id` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`id`)
+    REFERENCES `cololaCeramica`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `role_id`
+    FOREIGN KEY (`id`)
+    REFERENCES `cololaCeramica`.`roles` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `cololaCeramica`.`images`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cololaCeramica`.`images` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `product_img_id` INT NOT NULL,
+  `route` VARCHAR(255) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `product_img_id`
+    FOREIGN KEY (`id`)
+    REFERENCES `cololaCeramica`.`products` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 

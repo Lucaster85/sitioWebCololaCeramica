@@ -42,7 +42,12 @@ module.exports = (sequelize, dataTypes) => {
         },
         category_id: {
             type: dataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            foreignKey: true,
+            reference: {
+                model: 'Category',
+                key: 'id'
+            }
         }
     }
 
@@ -68,6 +73,9 @@ module.exports = (sequelize, dataTypes) => {
         Product.belongsTo(models.Category, {
             as: 'category',
             foreignKey: 'category_id'
+        });
+        Product.hasMany(models.Image, {
+            as: 'images'
         })
     };
 

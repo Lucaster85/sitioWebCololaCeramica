@@ -42,12 +42,16 @@ module.exports = (sequelize, dataTypes) => {
     User.associate = models => {
         User.hasMany(models.Address, {
             as: 'addresses',
-        })
-    }
-    User.associate = models => {
+        });
         User.hasMany(models.Cart, {
             as: 'carts',
-        })
+        });
+        User.hasMany(models.Role, {
+            as: 'roles',
+            through: 'user_roles',
+            foreignKey: 'role_id',
+            otherKey: 'user_id'
+        });
     }
 
     return User;
