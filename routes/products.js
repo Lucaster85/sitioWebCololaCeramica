@@ -4,14 +4,12 @@ var productsController = require('../controllers/productsController')
 
 router.get('/', productsController.list);
 
-router.get('/detail/:id', productsController.detail);
+router.get('/:id', productsController.detail);
 
-router.get('/create', productsController.create);
-router.post('/create', productsController.store);
+router.post('/', productsController.store);
 
-router.get('/edit/:id', productsController.edit);
-router.put('/edit/:id', productsController.update);
+router.patch('/:id', productsController.update);
 
-router.get('/delete/:id', productsController.delete);
+router.delete('/:id', productsController.delete);
 
 module.exports = router;

@@ -5,10 +5,11 @@ var indexController = require('../controllers/indexController')
 /* GET home page. */
 router.get('/', indexController.index);
 
-router.get('/contact', indexController.contact);
 router.post('/contact', indexController.sendMessege);
+//no si si hace falta en la api
 
 router.get('/about', indexController.about);
+//no si si hace falta en la api
 
 
 

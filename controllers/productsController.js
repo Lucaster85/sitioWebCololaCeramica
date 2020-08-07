@@ -1,23 +1,29 @@
+const db = require('../database/models');
+
 module.exports = {
     list(req, res) {
-        res.render('products', {title: 'LISTADO DE PRODUCTOS'});
+        db.Product.findAll({
+            include: [{association: 'category'}]
+        })
+        .then(products => {
+            res.json(products)
+        })
     },
     detail(req, res) {
-        res.send('DETALLE DE PRODUCTO');
-    },
-    create(req, res) {
-        res.send('CREA UN PRODUCTO');
+        db.Product.findByPk(req.params.id, {
+            include: [{association: 'category'}]
+        })
+        .then(product => {
+            res.json(product);
+        })
     },
     store(req, res) {
-        res.redirect('/create');
-    },
-    edit(req, res) {
-        res.send('FORMULARIO DE EDICION');
+        
     },
     update(req, res) {
-        res.redirect('/detail/:id');
+        
     },
     delete(req, res) {
-        res.redirect('/products');
+        
     },
 }

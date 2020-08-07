@@ -5,12 +5,14 @@ var usersController = require('../controllers/usersController')
 /* GET users listing. */
 router.get('/', usersController.users)
 
-router.get('/register', usersController.register);
 router.post('/register', usersController.create);
 
-router.get('/login', usersController.login);
 router.post('/login', usersController.processLogin);
 
 router.get('/logout', usersController.logout)
+
+router.post('/:id', usersController.update)
+
+router.delete('/:id', usersController.delete)
 
 module.exports = router;
