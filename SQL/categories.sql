@@ -1,0 +1,10 @@
+insert into categories (title, image) values ('Cabbage - Nappa', 'dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et');
+insert into categories (title, image) values ('Tray - 12in Rnd Blk', 'tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi');
+insert into categories (title, image) values ('Salami - Genova', 'habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at');
+insert into categories (title, image) values ('Onions - Red Pearl', 'consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus');
+insert into categories (title, image) values ('Remy Red', 'rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi');
+insert into categories (title, image) values ('Fennel - Seeds', 'ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum');
+insert into categories (title, image) values ('Curry Powder Madras', 'est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci');
+insert into categories (title, image) values ('Bread Sour Rolls', 'at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non');
+insert into categories (title, image) values ('Cake - Mini Cheesecake', 'in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar');
+insert into categories (title, image) values ('Cake Sheet Combo Party Pack', 'vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget');
