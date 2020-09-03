@@ -4,13 +4,13 @@ module.exports = (sequelize, dataTypes) => {
 
     const cols = {
         id: {
-            type: dataTypes.INTENGER,
+            type: dataTypes.INTEGER,
             primaryKey: true,
             allowNull: false,
             autoincrement: true
         },
         product_id: {
-            type: dataTypes.INTENGER,
+            type: dataTypes.INTEGER,
             allowNull: false,
             foreignKey: true,
             references: {

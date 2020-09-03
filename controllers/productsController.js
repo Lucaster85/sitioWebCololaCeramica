@@ -6,7 +6,8 @@ module.exports = {
             include: [{association: 'category'}]
         })
         .then(products => {
-            res.json(products)
+            //res.json(products)
+            res.send('PRODUCTOS')
         })
     },
     detail(req, res) {

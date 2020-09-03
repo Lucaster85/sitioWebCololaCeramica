@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
 
-    const alias = Role;
+    const alias = 'Role';
 
     const cols = {
         id: {
@@ -28,7 +28,7 @@ module.exports = (sequelize, dataTypes) => {
     const Role = sequelize.define(alias, cols, config);
 
     Role.associate = models => {
-        Role.hasMany(models.User, {
+        Role.belongsToMany(models.User, {
             as: 'users',
             through: 'user_roles',
             foreingKey: 'user_id',

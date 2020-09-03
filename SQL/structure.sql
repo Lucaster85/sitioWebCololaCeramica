@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`users` (
   `avatar` VARCHAR(255) NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`));
 
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`categories` (
   `updated_at` TIMESTAMP NULL,
   `vajilla` TINYINT NOT NULL DEFAULT 0,
   `decoracion` TINYINT NOT NULL DEFAULT 0,
-  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`));
 
 
@@ -57,10 +57,10 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`products` (
   `category_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `category_id`
-    FOREIGN KEY (`id`)
+    FOREIGN KEY (`category_id`)
     REFERENCES `cololaCeramica`.`categories` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`carts` (
   `user_cart_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `user_cart_id`
     FOREIGN KEY (`id`)
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`cart_products` (
   `cart_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `product_id`
     FOREIGN KEY (`id`)
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`addresses` (
   `user_address_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `user_address_id`
     FOREIGN KEY (`id`)
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`roles` (
   `role` VARCHAR(100) NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL,
-  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`));
 
 
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `cololaCeramica`.`user_roles` (
   `role_id` INT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
-  `delete_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `user_id`
     FOREIGN KEY (`id`)

@@ -46,7 +46,7 @@ module.exports = (sequelize, dataTypes) => {
         User.hasMany(models.Cart, {
             as: 'carts',
         });
-        User.hasMany(models.Role, {
+        User.belongsToMany(models.Role, {
             as: 'roles',
             through: 'user_roles',
             foreignKey: 'role_id',
