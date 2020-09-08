@@ -28,16 +28,23 @@
     <header>
         <div class="container-header">
             <!-- user option -->
-            <div></div>
+            <div class="header-user">
+                <a href="/users/login" class="header-user-btn" id="btn-login" hidden>Iniciar sesión</a>
+                <a href="/users/register" class="header-user-btn" id="btn-signup" hidden>Registrarse</a>
+                <a href="/users/login" class="fas fa-user"></a>
+            </div>
             <!-- Logo -->
-            <div>
+            <div class="header-logo-div">
                 <a href="#">
                     <img class="header-logo" src="images/logo/cololaCeramica.png" alt="">
                 </a>
             </div>
             <!-- cart -->
             <div>
+                <i class="fas fa-heart"></i>
+                <span>0</span>
                 <i class="fas fa-shopping-cart"></i>
+                <span>0</span>
             </div>
         </div>
         <!-- Navigation -->
@@ -51,22 +58,64 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div class="navbar-nav">
                             <a class="nav-item nav-link" href="#">Inicio</a>
-                        <hr>
+                        
                             <a class="nav-item nav-link" href="#">Productos</a>
-                        <hr>
+                        
                             <a class="nav-item nav-link" href="#">Talleres</a>
-                        <hr>
+                        
                             <a class="nav-item nav-link" href="#">Nosotros</a>
-                        <hr>
+                        
                             <a class="nav-item nav-link" href="#">Contacto</a>
-                        <hr>
+                        
                             <a class="nav-item nav-link" href="#">Mayoristas</a>
-                        <hr>
+                        
                     </div>
                 </div>
             </nav>
         </div>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="search">
+        </div>
     </header>
+    <!-- Outandings -->
+    <div class="container-css">
+        <div class="card-css">
+            <img src="images/img1.jpg" alt="">
+            <h5>Producto</h5>
+            <h6>Categoria</h6>
+            <p>$000.00</p>
+        </div>
+        <div class="card-css">
+            <img src="images/img1.jpg" alt="">
+            <h5>Producto</h5>
+            <h6>Categoria</h6>
+            <p>$000.00</p>
+        </div>
+        <div class="card-css">
+            <img src="images/img1.jpg" alt="">
+            <h5>Producto</h5>
+            <h6>Categoria</h6>
+            <p>$000.00</p>
+        </div>
+        <div class="card-css">
+            <img src="images/img1.jpg" alt="">
+            <h5>Producto</h5>
+            <h6>Categoria</h6>
+            <p>$000.00</p>
+        </div>
+    </div>
+    <div class="abajo"></div>
+    <!-- <div>
+        <div class="card" style="width: 13rem;">
+            <img src="https://placekitten.com/140/140" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Nombre</h5>
+              <p class="card-text">Categoria</p>
+              <p class="card-text">$000.00</p>
+            </div>
+          </div>
+    </div> -->
 </body>
 
 </html>
