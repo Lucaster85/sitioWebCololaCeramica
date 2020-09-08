@@ -21,7 +21,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+/* routes */
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/products', productsRouter);
+app.use('/categories', categoriesRouter);
 
+/* Api routes */
 app.use('/api', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);

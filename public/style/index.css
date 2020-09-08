@@ -1,0 +1,16 @@
+.container-header {
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.header-logo {
+    border: 1px solid red;
+    border-radius: 50%;
+    height: 15vh;
+}
+.nav {
+    text-align: center;
+    border: 1px solid red;
+}
