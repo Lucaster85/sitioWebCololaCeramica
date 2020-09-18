@@ -41,12 +41,12 @@ module.exports = (sequelize, dataTypes) => {
 
     const Favorite = sequelize.define(alias, cols, config);
 
-    favorite.associate = models => {
-        favorite.belongsTo(models.User, {
+    Favorite.associate = models => {
+        Favorite.belongsTo(models.User, {
             as: 'user',
             foreignKey: 'user_favorite_id'
         });
-        favorite.belongsToMany(models.Product, {
+        Favorite.belongsToMany(models.Product, {
             as: 'products',
             through: 'favorite_products',
             foreignKey: 'product_fav_id',

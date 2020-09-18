@@ -1,18 +1,35 @@
-var express = require('express');
-var router = express.Router();
-var usersController = require('../controllers/usersController')
+const express = require('express');
+const router = express.Router();
+const usersController = require('../controllers/usersController');
+const path = require('path');
+const multer = require('multer');
+
+// ** MULTER **
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.resolve(__dirname, '..', 'public', 'img', 'users'));
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+  });
+const upload = multer({ storage: storage });
+// ** MULTER **
 
 /* GET users listing. */
 router.get('/', usersController.users)
 
+router.get('/register', usersController.register);
 router.post('/register', usersController.create);
 
+router.get('/login', usersController.login);
 router.post('/login', usersController.processLogin);
 
-router.get('/logout', usersController.logout)
+router.post('/logout', usersController.logout)
 
-router.post('/:id', usersController.update)
+router.get('/editProfile', usersController.edit)
+router.put('/editProfile', usersController.update)
 
-router.delete('/:id', usersController.delete)
+router.delete('/delete', usersController.delete)
 
 module.exports = router;
