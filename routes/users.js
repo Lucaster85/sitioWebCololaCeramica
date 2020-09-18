@@ -1,8 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const { Router } = require('express');
+const router = Router();
 const usersController = require('../controllers/usersController');
 const path = require('path');
 const multer = require('multer');
+
+/* MIDDLEWARES */
+
+const editProfileValidator = require('../middlewares/editProfileValidator');
 
 // ** MULTER **
 const storage = multer.diskStorage({
@@ -20,7 +24,7 @@ const upload = multer({ storage: storage });
 router.get('/', usersController.users)
 
 router.get('/register', usersController.register);
-router.post('/register', usersController.create);
+router.post('/register', upload.any(),usersController.create);
 
 router.get('/login', usersController.login);
 router.post('/login', usersController.processLogin);
@@ -28,7 +32,7 @@ router.post('/login', usersController.processLogin);
 router.post('/logout', usersController.logout)
 
 router.get('/editProfile', usersController.edit)
-router.put('/editProfile', usersController.update)
+router.put('/editProfile', upload.any(), editProfileValidator, usersController.update)
 
 router.delete('/delete', usersController.delete)
 
